@@ -1,3 +1,5 @@
+using ChristmasWorkshop.BLL.Handlers;
+using ChristmasWorkshop.BLL.Middleware;
 using ChristmasWorkshop.BLL.Services;
 using ChristmasWorkshop.DAL.Data;
 using ChristmasWorkshop.PL;
@@ -14,6 +16,13 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddDbContext<EntityContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<LightService>();
+builder.Services.AddScoped<TokenService>();
+
+builder.Services.AddScoped<LocalValidationHandler>();
+builder.Services.AddScoped<ApiValidationHandler>();
+
+
+
 builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
@@ -39,6 +48,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<TokenCaptureMiddleware>();
 
 app.UseRouting();
 

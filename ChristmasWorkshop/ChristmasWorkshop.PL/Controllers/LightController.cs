@@ -5,11 +5,11 @@ namespace ChristmasWorkshop.PL.Controllers;
 
 [ApiController]
 [Route("/")]
-public class LightsController : ControllerBase
+public class LightController : ControllerBase
 {
     private readonly LightService _lightService;
 
-    public LightsController(LightService lightService)
+    public LightController(LightService lightService)
     {
         _lightService = lightService;
     }
@@ -37,24 +37,12 @@ public class LightsController : ControllerBase
         try
         {
             var light = _lightService.CreateLight(Desc.Desc);
-            return Ok(new { succeeded = true, light = light }); // Include succeeded = true
+            return Ok(new { succeeded = true }); // Include succeeded = true
         }
         catch (Exception ex)
         {
+            Console.WriteLine(ex.ToString());
             return StatusCode(500, new { succeeded = false, message = ex.Message });
         }
-    }
-
-    
-    [HttpDelete("expired")]
-    public IActionResult DeleteLightsByToken([FromQuery] string token)
-    {
-        if (string.IsNullOrEmpty(token))
-        {
-            return BadRequest("Christmas token is required.");
-        }
-
-        _lightService.DeleteLightsByToken(token);
-        return Ok(new { message = "Expired lights deleted successfully." });
     }
 }

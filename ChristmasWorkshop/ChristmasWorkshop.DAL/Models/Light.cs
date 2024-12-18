@@ -10,7 +10,7 @@ public class Light
     public double Y { get; set; }
     public double Radius { get; set; }
     public string Color { get; set; }
-    public string Effect { get; set; }
-    public string Description { get; set; }
-    public string ChristmasToken { get; set; }
+    public string Effects { get; set; }
+    public string Desc { get; set; }
+    public string CT { get; set; }
 }
