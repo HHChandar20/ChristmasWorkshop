@@ -95,7 +95,7 @@ public class LightService
     
     public void DeleteLightsByToken(string token)
     {
-        var lightsToDelete = _entityContext.Lights.Where(l => l.ChristmasToken == token).ToList();
+        var lightsToDelete = _entityContext.Lights.Where(l => l.ChristmasToken != token).ToList();
         _entityContext.Lights.RemoveRange(lightsToDelete);
         _entityContext.SaveChanges();
     }

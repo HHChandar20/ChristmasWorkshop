@@ -19,26 +19,32 @@ public class LightsController : ControllerBase
     {
         return Ok(_lightService.GetLights());
     }
-    
-    
-    [HttpPost]
-    public IActionResult CreateLight([FromBody] string description)
+
+
+    public class DescriptionData
     {
-        if (string.IsNullOrEmpty(description))
+        public string? Desc { get; set; }
+    }
+
+    [HttpPost]
+    public IActionResult CreateLight([FromBody] DescriptionData Desc)
+    {
+        if (string.IsNullOrEmpty(Desc.Desc))
         {
-            return BadRequest("Description is required.");
+            return BadRequest(new { succeeded = false, message = "Description is required." });
         }
 
         try
         {
-            var light = _lightService.CreateLight(description);
-            return Ok(light);
+            var light = _lightService.CreateLight(Desc.Desc);
+            return Ok(new { succeeded = true, light = light }); // Include succeeded = true
         }
         catch (Exception ex)
         {
             return StatusCode(500, new { succeeded = false, message = ex.Message });
         }
     }
+
     
     [HttpDelete("expired")]
     public IActionResult DeleteLightsByToken([FromQuery] string token)
