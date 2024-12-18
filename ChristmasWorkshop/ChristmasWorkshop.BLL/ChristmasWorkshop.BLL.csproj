@@ -7,12 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Implementations\" />
-      <Folder Include="Interfaces\" />
+      <ProjectReference Include="..\ChristmasWorkshop.DAL\ChristmasWorkshop.DAL.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ChristmasWorkshop.DAL\ChristmasWorkshop.DAL.csproj" />
+      <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+      <PackageReference Include="RestSharp" Version="112.1.0" />
     </ItemGroup>
 
 </Project>
