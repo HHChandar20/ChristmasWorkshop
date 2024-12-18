@@ -3,24 +3,24 @@ using Microsoft.AspNetCore.Http;
 
 public class TokenService
 {
-    private readonly EntityContext _entityContext;
-    private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly EntityContext entityContext;
+    private readonly IHttpContextAccessor httpContextAccessor;
 
     public TokenService(EntityContext entityContext, IHttpContextAccessor httpContextAccessor)
     {
-        _entityContext = entityContext;
-        _httpContextAccessor = httpContextAccessor;
+        this.entityContext = entityContext;
+        this.httpContextAccessor = httpContextAccessor;
     }
 
     public string GetCurrentToken()
     {
-        var httpContext = _httpContextAccessor.HttpContext;
+        var httpContext = this.httpContextAccessor.HttpContext;
         if (httpContext == null)
         {
             throw new InvalidOperationException("HttpContext is not available.");
         }
 
-        string token = httpContext.Request.Headers["Christmas-Token"]!;
+        string token = httpContext.Request.Headers["Christmas-Token"] !;
         if (string.IsNullOrEmpty(token))
         {
             throw new UnauthorizedAccessException("Missing Christmas-Token in request headers.");
@@ -31,8 +31,8 @@ public class TokenService
 
     public void DeleteLightsByToken(string token)
     {
-        var lightsToDelete = _entityContext.Lights.Where(l => l.CT != token).ToList();
-        _entityContext.Lights.RemoveRange(lightsToDelete);
-        _entityContext.SaveChanges();
+        var lightsToDelete = this.entityContext.Lights.Where(l => l.CT != token).ToList();
+        this.entityContext.Lights.RemoveRange(lightsToDelete);
+        this.entityContext.SaveChanges();
     }
 }

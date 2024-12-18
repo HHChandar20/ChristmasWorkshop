@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChristmasWorkshop.PL", "ChristmasWorkshop.PL\ChristmasWorkshop.PL.csproj", "{E4C01E5B-61E7-4F48-B341-8F63A6BE49C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChristmasWorkshop.DAL", "ChristmasWorkshop.DAL\ChristmasWorkshop.DAL.csproj", "{F2D9F2C8-C2FE-4754-BB5C-860157CEF6C4}"
@@ -10,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFiles", "SolutionFi
 	ProjectSection(SolutionItems) = preProject
 		..\.gitignore = ..\.gitignore
 		..\README.md = ..\README.md
+		ChristmasWorkshop.ruleset = ChristmasWorkshop.ruleset
 	EndProjectSection
 EndProject
 Global
@@ -30,5 +34,8 @@ Global
 		{C39A5126-88BF-475D-9860-2F8D07C0D44B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C39A5126-88BF-475D-9860-2F8D07C0D44B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C39A5126-88BF-475D-9860-2F8D07C0D44B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

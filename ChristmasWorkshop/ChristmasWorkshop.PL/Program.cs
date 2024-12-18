@@ -21,13 +21,12 @@ builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<LocalValidationHandler>();
 builder.Services.AddScoped<ApiValidationHandler>();
 
-
-
 builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin",
+    options.AddPolicy(
+        "AllowSpecificOrigin",
         corsPolicyBuilder =>
         {
             corsPolicyBuilder.WithOrigins("https://codingburgas.karagogov.com")

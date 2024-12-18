@@ -1,5 +1,4 @@
 ﻿using ChristmasWorkshop.DAL.Models;
-using System;
 
 namespace ChristmasWorkshop.BLL.Factories;
 
@@ -9,7 +8,7 @@ public class LightFactory
     private static readonly string[] Colors = { "blue-lt", "blue-dk", "red", "gold-lt", "gold-dk" };
     private static readonly string[] Effects = { "g1", "g2", "g3" };
 
-    public static Light CreateLight(double x, double y, string description, string color, string effects, double radius, string token)
+    public static Light CreateLight(double x, double y, string description, string color, string effects, double radius, string ct)
     {
         return new Light
         {
@@ -19,7 +18,7 @@ public class LightFactory
             Color = color,
             Effects = effects,
             Desc = description,
-            CT = token
+            CT = ct,
         };
     }
 
@@ -29,7 +28,9 @@ public class LightFactory
         do
         {
             color = Colors[Random.Next(Colors.Length)];
-        } while (color == lastColor);
+        }
+        while (color == lastColor);
+
         return color;
     }
 

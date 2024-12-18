@@ -1,6 +1,4 @@
 ﻿using RestSharp;
-using System;
-using System.Threading.Tasks;
 
 namespace ChristmasWorkshop.BLL.Handlers;
 

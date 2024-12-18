@@ -7,19 +7,18 @@ namespace ChristmasWorkshop.PL.Controllers;
 [Route("/")]
 public class LightController : ControllerBase
 {
-    private readonly LightService _lightService;
+    private readonly LightService lightService;
 
     public LightController(LightService lightService)
     {
-        _lightService = lightService;
+        this.lightService = lightService;
     }
 
     [HttpGet]
     public IActionResult GetLights()
     {
-        return Ok(_lightService.GetLights());
+        return this.Ok(this.lightService.GetLights());
     }
-
 
     public class DescriptionData
     {
@@ -27,22 +26,22 @@ public class LightController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult CreateLight([FromBody] DescriptionData Desc)
+    public IActionResult CreateLight([FromBody] DescriptionData desc)
     {
-        if (string.IsNullOrEmpty(Desc.Desc))
+        if (string.IsNullOrEmpty(desc.Desc))
         {
-            return BadRequest(new { succeeded = false, message = "Description is required." });
+            return this.BadRequest(new { succeeded = false, message = "Description is required." });
         }
 
         try
         {
-            var light = _lightService.CreateLight(Desc.Desc);
-            return Ok(new { succeeded = true }); // Include succeeded = true
+            var light = this.lightService.CreateLight(desc.Desc);
+            return this.Ok(new { succeeded = true }); // Include succeeded = true
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
-            return StatusCode(500, new { succeeded = false, message = ex.Message });
+            return this.StatusCode(500, new { succeeded = false, message = ex.Message });
         }
     }
 }

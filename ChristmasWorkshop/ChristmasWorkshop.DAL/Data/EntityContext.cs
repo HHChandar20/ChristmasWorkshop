@@ -7,7 +7,8 @@ public class EntityContext : DbContext
 {
     public DbSet<Light> Lights { get; set; }
 
-    public EntityContext(DbContextOptions<EntityContext> options) : base(options)
+    public EntityContext(DbContextOptions<EntityContext> options)
+        : base(options)
     {
     }
 }
