@@ -396,3 +396,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+*.idea
+
+appsettings.json
+appsettings.*.json
+
+.idea
+.DS_Store
